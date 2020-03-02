@@ -30,7 +30,12 @@ public final class Constants {
 
     //Motor Constants
     public static final class MotorConstants {
+
+        //Flywheel Motor
         public static final int kFlyWheel = 5;
+        
+        //Intake Motor
+        public static final int kIntakeMotor = 7;
     }
 
     //OI Constants

@@ -7,8 +7,10 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.*;
 
@@ -16,9 +18,12 @@ import frc.robot.Constants.*;
  * Add your docs here.
  */
 public class FlyWheel extends SubsystemBase {
+
+    final String FlyWheelSpeed ="FlyWheelSpeed";
+    private Double setSpeed;
     
     //Motor
-    private final WPI_TalonSRX flyWheel = new WPI_TalonSRX(OIConstants.kFlyWheelButton);
+    private final WPI_TalonSRX flyWheel = new WPI_TalonSRX(MotorConstants.kFlyWheel);
     
     //Periodic
     @Override
@@ -27,11 +32,22 @@ public class FlyWheel extends SubsystemBase {
 
     //Run
     public void Run() {
-        flyWheel.set(SpeedConstants.kFlyWheelSpeed);
+        double backup = SpeedConstants.kFlyWheelSpeed;
+        setSpeed = getPreferencesDouble(FlyWheelSpeed ,backup);
+        flyWheel.set(ControlMode.PercentOutput, setSpeed);
     }
 
     //Stop
     public void Stop() {
         flyWheel.set(0.0);
     }
+
+      // Preferences
+  private static double getPreferencesDouble(String key, double backup) {
+    Preferences preferences = Preferences.getInstance();
+    if(!preferences.containsKey(key)) {
+      preferences.putDouble(key, backup);
+    }
+    return preferences.getDouble(key, backup);
+  }
 }
