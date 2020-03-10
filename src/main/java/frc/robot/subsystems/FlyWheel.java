@@ -19,6 +19,7 @@ import frc.robot.Constants.*;
  */
 public class FlyWheel extends SubsystemBase {
 
+    // Shuffleboard
     final String FlyWheelSpeed ="FlyWheelSpeed";
     private Double setSpeed;
     
@@ -42,8 +43,8 @@ public class FlyWheel extends SubsystemBase {
         flyWheel.set(0.0);
     }
 
-      // Preferences
-  private static double getPreferencesDouble(String key, double backup) {
+    // Preferences
+    private static double getPreferencesDouble(String key, double backup) {
     Preferences preferences = Preferences.getInstance();
     if(!preferences.containsKey(key)) {
       preferences.putDouble(key, backup);

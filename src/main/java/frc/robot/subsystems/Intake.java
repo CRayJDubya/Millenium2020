@@ -18,6 +18,8 @@ import frc.robot.Constants.*;
  */
 public class Intake extends SubsystemBase {
 
+
+  // Shuffleboard
     final String IntakeSpeed ="IntakeSpeed";
     private Double setSpeed;
     
@@ -41,8 +43,8 @@ public class Intake extends SubsystemBase {
         Intake.set(0.0);
     }
     
-          // Preferences
-  private static double getPreferencesDouble(String key, double backup) {
+    // Preferences
+    private static double getPreferencesDouble(String key, double backup) {
     Preferences preferences = Preferences.getInstance();
     if(!preferences.containsKey(key)) {
       preferences.putDouble(key, backup);

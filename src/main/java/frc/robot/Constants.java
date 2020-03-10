@@ -40,6 +40,7 @@ public final class Constants {
 
     //OI Constants
     public static final class OIConstants {
+
         //Joysticks
         public static final int kLeftJoystick = 1;
         public static final int kRightJoystick = 0;
@@ -50,10 +51,11 @@ public final class Constants {
     }
 
     public static final class SpeedConstants {
+
         //FlyWheel
         public static final double kFlyWheelSpeed = 0.5;
 
         //Intake
-        public static final double kIntakeSpeed = 0.5;
+        public static final double kIntakeSpeed = 0.2;
     }
 }

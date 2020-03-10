@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.SlewRateLimiter;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.FlyWheel;
 import frc.robot.subsystems.Intake;
@@ -40,9 +41,8 @@ public class RobotContainer {
   private final CommandBase m_flywheelCommand = new SpinFlyWheel(m_FlyWheel);
   private final CommandBase m_intakeCommand = new RunIntake(m_Intake);
 
-
-  //private final ExampleCommand m_autoCommand = new ExampleCommand(m_DriveTrain);
-
+  //Slew Rate Limiter (makes an acceleration)
+  private final SlewRateLimiter m_speedLimiter = new SlewRateLimiter(3);
 
 
   /**
@@ -53,8 +53,8 @@ public class RobotContainer {
     //Creates Tank Drive ((really finnicky))
     m_DriveTrain.setDefaultCommand(
       new RunCommand(() -> m_DriveTrain.tankDrive(
-        leftStick.getY() * -1.0,
-        rightStick.getY()), m_DriveTrain));
+        rightStick.getY(),
+        leftStick.getY()), m_DriveTrain));
 
     // Configure the button bindings
     configureButtonBindings();
