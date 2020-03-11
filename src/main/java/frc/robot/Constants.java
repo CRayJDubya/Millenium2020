@@ -36,6 +36,10 @@ public final class Constants {
         
         //Intake Motor
         public static final int kIntakeMotor = 7;
+
+        //Climb Motors
+        public static final int kLiftMotor = 6;
+        public static final int kClimbMotor = 8;
     }
 
     //OI Constants
@@ -50,6 +54,7 @@ public final class Constants {
         public static final int kIntakeButton = 1;
     }
 
+    //Speed Constants
     public static final class SpeedConstants {
 
         //FlyWheel
@@ -57,5 +62,11 @@ public final class Constants {
 
         //Intake
         public static final double kIntakeSpeed = 0.2;
+
+        //Lift
+        public static final double kLiftSpeed = 0.1;
+
+        //Climb
+        public static final double kClimbSpeed = 0.5;
     }
 }
